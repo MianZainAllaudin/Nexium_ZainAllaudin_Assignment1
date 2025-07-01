@@ -1,0 +1,18 @@
+[
+  {
+    "topic": "success",
+    "quotes": [
+      "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
+      "The only place where success comes before work is in the dictionary. - Vidal Sassoon",
+      "Success usually comes to those who are too busy to be looking for it. - Henry David Thoreau"
+    ]
+  },
+  {
+    "topic": "motivation",
+    "quotes": [
+      "Believe you can and you're halfway there. - Theodore Roosevelt",
+      "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
+      "The only way to do great work is to love what you do. - Steve Jobs"
+    ]
+  }
+]
