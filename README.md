@@ -2,31 +2,42 @@
 
 ## Quote Generator Web App 
 
-A simple Next.js app that generates motivational quotes based on a topic.
+A beautiful, responsive Next.js app for discovering and saving motivational quotes.
 
 ---
 
 ## Features
 
-- Search for motivational quotes by topic (e.g., "success", "motivation").
-- Responsive UI built with [Next.js](https://nextjs.org/) and [React](https://react.dev/).
-- Uses static JSON data for quotes.
+
+- **Browse motivational quotes by category** (e.g., "Success", "Love", "Wisdom", etc.)
+- **Fetches quotes live from the [ZenQuotes API](https://zenquotes.io/)**
+- **Save your favorite quotes** (persisted in your browser)
+- **Modern, responsive UI** built with Next.js and React
+- **Quotes displayed on beautiful image backgrounds**
 
 ---
 
 ## Project Structure
 
 ```
-app/
-  ├── data/
-  │   └── quotes.json         # Quotes data (topics and quotes)
-  ├── QuoteGenerator.tsx      # Main quote generator component (client)
-  ├── layout.tsx              # App layout and font setup
-  └── page.tsx                # Home page (server component)
-components/
-  └── ui/                     # UI components (Button, Input, Card, etc.)
+├── app/
+│   ├── api/
+│   │   └── quotes/
+│   │       └── route.ts         # Next.js API route proxying ZenQuotes API
+│   ├── QuoteGenerator.tsx       # Main quote generator component (category, favorites, UI)
+│   ├── layout.tsx               # App layout and font setup
+│   └── page.tsx                 # Home page (renders QuoteGenerator)
+├── components/
+│   └── ui/
+│       ├── button.tsx           # Button UI component
+│       ├── input.tsx            # Input UI component (may be unused now)
+│       └── card.tsx             # Card UI component
+├── styles/
+│   └── globals.css              # Global CSS styles
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
-
 ---
 
 ## Setup & Development
@@ -46,27 +57,10 @@ components/
 
 ## Usage
 
-- Enter a topic (e.g., "success", "motivation") in the input field.
-- Click **Get Quotes** to see relevant motivational quotes.
-
----
-
-## Adding/Editing Quotes
-
-- Edit `app/data/quotes.json` to add new topics or quotes.
-- Each topic should have a `topic` string and a `quotes` array.
-
-Example:
-```json
-{
-  "topic": "happiness",
-  "quotes": [
-    "Happiness depends upon ourselves. - Aristotle",
-    "For every minute you are angry you lose sixty seconds of happiness. - Ralph Waldo Emerson"
-  ]
-}
-```
-
+- **Select a category** from the dropdown menu (or leave as "All" for a random mix).
+- Click **Get Quotes** to see motivational quotes from that category.
+- Click the ☆ button to save a quote to your favorites, or ★ to remove it from favorites.
+- Your favorite quotes will appear in the "⭐ Favorite Quotes" section and are saved in
 ---
 
 ## Deployment
