@@ -16,7 +16,15 @@ export default function QuoteGenerator() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [favorites, setFavorites] = useState<Quote[]>([]);
-  const [categories, setCategories] = useState<string[]>(["inspirational", "success", "life", "love", "wisdom", "happiness", "motivational"]);
+  const [categories, setCategories] = useState<string[]>([
+    "inspirational",
+    "success",
+    "life",
+    "love",
+    "wisdom",
+    "happiness",
+    "motivational",
+  ]);
   // Load favorites from localStorage
   useEffect(() => {
     const favs = localStorage.getItem("favoriteQuotes");
@@ -94,18 +102,28 @@ export default function QuoteGenerator() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-200 via-purple-200 to-pink-100 py-12 px-4 flex flex-col items-center">
       <div className="max-w-md w-full mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-8">✨ Motivational Quote Generator</h1>
-        <form onSubmit={handleSubmit} className="space-y-4 bg-white/70 rounded-xl shadow-lg p-6">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          ✨ Motivational Quote Generator
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 bg-white/70 rounded-xl shadow-lg p-6"
+        >
           <div>
-            <label className="block mb-2 font-medium">Select Category</label>
+            <label htmlFor="category-select" className="block mb-2 font-medium">
+              Select Category
+            </label>
             <select
+              id="category-select"
               className="w-full p-2 rounded border"
               value={category}
-              onChange={e => setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             >
               <option value="">All</option>
-              {categories.map(cat => (
-                <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                </option>
               ))}
             </select>
           </div>
@@ -119,10 +137,21 @@ export default function QuoteGenerator() {
           <div className="mt-8 space-y-4">
             <h2 className="text-xl font-semibold">Your Quotes:</h2>
             {results.map((quote) => (
-              <div key={quote._id} className="relative rounded-xl overflow-hidden shadow-lg bg-cover bg-center" style={{backgroundImage: 'url(https://source.unsplash.com/600x300/?nature,landscape,sky,motivation)'}}>
+              <div
+                key={quote._id}
+                className="relative rounded-xl overflow-hidden shadow-lg bg-cover bg-center"
+                style={{
+                  backgroundImage:
+                    "url(https://source.unsplash.com/600x300/?nature,landscape,sky,motivation)",
+                }}
+              >
                 <div className="bg-white/80 p-4">
-                  <p className="text-gray-700 text-lg font-medium">"{quote.content}"</p>
-                  <p className="text-right text-sm text-gray-500 mt-2">- {quote.author}</p>
+                  <p className="text-gray-700 text-lg font-medium">
+                    "{quote.content}"
+                  </p>
+                  <p className="text-right text-sm text-gray-500 mt-2">
+                    - {quote.author}
+                  </p>
                   <Button
                     className="absolute top-2 right-2 text-xs px-2 py-1"
                     variant="secondary"
@@ -140,15 +169,24 @@ export default function QuoteGenerator() {
             <h2 className="text-xl font-semibold mb-4">⭐ Favorite Quotes</h2>
             <div className="space-y-4">
               {favorites.map((quote) => (
-                <div key={quote._id} className="relative rounded-xl overflow-hidden shadow bg-gradient-to-r from-yellow-100 to-pink-100">
+                <div
+                  key={quote._id}
+                  className="relative rounded-xl overflow-hidden shadow bg-gradient-to-r from-yellow-100 to-pink-100"
+                >
                   <div className="p-4">
-                    <p className="text-gray-800 text-lg font-medium">"{quote.content}"</p>
-                    <p className="text-right text-sm text-gray-500 mt-2">- {quote.author}</p>
+                    <p className="text-gray-800 text-lg font-medium">
+                      "{quote.content}"
+                    </p>
+                    <p className="text-right text-sm text-gray-500 mt-2">
+                      - {quote.author}
+                    </p>
                     <Button
                       className="absolute top-2 right-2 text-xs px-2 py-1"
                       variant="destructive"
                       onClick={() => handleRemoveFavorite(quote._id)}
-                    >Remove</Button>
+                    >
+                      Remove
+                    </Button>
                   </div>
                 </div>
               ))}
